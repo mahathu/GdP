@@ -1,3 +1,4 @@
+import gdp.stdlib.StdAudio;
 import gdp.stdlib.StdDraw;
 import gdp.stdlib.StdIn;
 
@@ -29,6 +30,8 @@ public class Sonnensystem {
 		 * planets[i][3] y-Geschwindigkeit des Planeten 
 		 * planets[i][4] Masse des Planeten
 		 */
+
+		StdAudio.play("2001.mid");
 
 		while (true) {
 			// aktuellen Zustand des Systems zeichnen
@@ -74,17 +77,13 @@ public class Sonnensystem {
 			for (int i = 0; i < NUMBER_OF_PLANETS; i++) {
 				acceleration[i][0] = force[i][0] / planets[i][4]; // a = F/m
 				acceleration[i][1] = force[i][1] / planets[i][4]; // a = F/m
-			}
 
-			// neue Planetengeschwindigkeit:
-			for (int i = 0; i < NUMBER_OF_PLANETS; i++) {
+				// neue Planetengeschwindigkeit:
 				planets[i][2] += TIME_INTERVAL * acceleration[i][0];
 				planets[i][3] += TIME_INTERVAL * acceleration[i][1];
-			}
 
-			// neue Planetenposition berechnen basierend auf deren
-			// Geschwindigkeit
-			for (int i = 0; i < NUMBER_OF_PLANETS; i++) {
+				// neue Planetenposition berechnen basierend auf deren
+				// Geschwindigkeit
 				planets[i][0] += TIME_INTERVAL * planets[i][2];
 				planets[i][1] += TIME_INTERVAL * planets[i][3];
 			}
