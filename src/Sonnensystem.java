@@ -8,9 +8,7 @@ public class Sonnensystem {
 		final float SYSTEM_RADIUS = StdIn.readFloat();
 		final String BACKGROUND_FILE = "starfield.jpg";
 		final int TIME_INTERVAL = 25000;
-		final double G = 6.67E-11;
-
-		int current_time = 0;
+		final double G = 6.67e-11;
 
 		float[][] planets = new float[NUMBER_OF_PLANETS][5];
 		String[] planet_files = new String[NUMBER_OF_PLANETS];
@@ -25,17 +23,18 @@ public class Sonnensystem {
 			planet_files[i] = StdIn.readString();
 		}
 		/*
-		 * planets[i][0] x-Koordinate des Planeten planets[i][1] y-Koordinate
-		 * des Planeten planets[i][2] x-Geschwindigkeit des Planeten
-		 * planets[i][3] y-Geschwindigkeit des Planeten planets[i][4] Masse des
-		 * Planeten
+		 * planets[i][0] x-Koordinate des Planeten 
+		 * planets[i][1] y-Koordinate des Planeten 
+		 * planets[i][2] x-Geschwindigkeit des Planeten
+		 * planets[i][3] y-Geschwindigkeit des Planeten 
+		 * planets[i][4] Masse des Planeten
 		 */
-
-		StdDraw.setXscale(-SYSTEM_RADIUS, SYSTEM_RADIUS);
-		StdDraw.setYscale(-SYSTEM_RADIUS, SYSTEM_RADIUS);
 
 		while (true) {
 			// aktuellen Zustand des Systems zeichnen
+			StdDraw.setXscale(-SYSTEM_RADIUS, SYSTEM_RADIUS);
+			StdDraw.setYscale(-SYSTEM_RADIUS, SYSTEM_RADIUS);
+
 			StdDraw.picture(0, 0, BACKGROUND_FILE);
 			for (int i = 0; i < NUMBER_OF_PLANETS; i++) {
 				StdDraw.picture(planets[i][0], planets[i][1], planet_files[i]);
@@ -45,9 +44,6 @@ public class Sonnensystem {
 			// calculate gravitational force for each planet
 			double new_forceX, new_forceY, distanceX, distanceY, r, new_force;
 			for (int i = 0; i < NUMBER_OF_PLANETS; i++) {
-				new_forceX = 0;
-				new_forceY = 0;
-
 				force[i][0] = 0;
 				force[i][1] = 0;
 
@@ -55,8 +51,8 @@ public class Sonnensystem {
 					if (j == i)
 						continue;
 
-					distanceX = Math.abs(planets[i][0] - planets[j][0]);
-					distanceY = Math.abs(planets[i][1] - planets[j][1]);
+					distanceX = planets[i][0] - planets[j][0];
+					distanceY = planets[i][1] - planets[j][1];
 
 					r = Math.sqrt(Math.pow(distanceX, 2)
 							+ Math.pow(distanceY, 2));
@@ -64,8 +60,8 @@ public class Sonnensystem {
 					new_force = G * planets[i][4] * planets[j][4]
 							/ Math.pow(r, 2); // F=(G*m1*m2)/r^2
 
-					new_forceX = new_force * (distanceX / r);
-					new_forceY = new_force * (distanceY / r);
+					new_forceX = -new_force * (distanceX / r);
+					new_forceY = -new_force * (distanceY / r);
 
 					// Die Beschleunigung in x/y-Richtung des Planeten addiert
 					// sich aus den wirkenden Kräften
@@ -82,17 +78,15 @@ public class Sonnensystem {
 
 			// neue Planetengeschwindigkeit:
 			for (int i = 0; i < NUMBER_OF_PLANETS; i++) {
-				planets[i][2] = planets[i][2] + TIME_INTERVAL
-						* acceleration[i][0];
-				planets[i][3] = planets[i][3] + TIME_INTERVAL
-						* acceleration[i][1];
+				planets[i][2] += TIME_INTERVAL * acceleration[i][0];
+				planets[i][3] += TIME_INTERVAL * acceleration[i][1];
 			}
 
 			// neue Planetenposition berechnen basierend auf deren
 			// Geschwindigkeit
 			for (int i = 0; i < NUMBER_OF_PLANETS; i++) {
-				planets[i][0] = planets[i][0] + TIME_INTERVAL * planets[i][2];
-				planets[i][1] = planets[i][1] + TIME_INTERVAL * planets[i][3];
+				planets[i][0] += TIME_INTERVAL * planets[i][2];
+				planets[i][1] += TIME_INTERVAL * planets[i][3];
 			}
 		}
 	}
