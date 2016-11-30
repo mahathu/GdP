@@ -67,7 +67,7 @@ public class Sonnensystem {
 					new_forceY = -new_force * (distanceY / r);
 
 					// Die Beschleunigung in x/y-Richtung des Planeten addiert
-					// sich aus den wirkenden Kraeften
+					// sich aus den wirkenden Kräften
 					force[i][0] += new_forceX;
 					force[i][1] += new_forceY;
 				}
