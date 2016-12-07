@@ -1,9 +1,11 @@
+import java.util.Arrays;
+
 public class Bigs {
 	// addiert die Ziffernfelder a und b
 	public static int[] add(int[] a, int[] b) {
 		int max_len = a.length > b.length ? a.length + 1 : b.length + 1;
 		int a_val, b_val, rollover;
-		a_val = b_val = rollover = 0;
+		rollover = 0;
 		int[] result = new int[max_len];
 		for (int i = 0; i < max_len; i++) {
 			a_val = b_val = 0;
@@ -14,13 +16,8 @@ public class Bigs {
 			if (i < b.length) {
 				b_val = b[i];
 			}
-			if (a_val + b_val + rollover > 9) {
-				result[i] = (a_val + b_val + rollover) % 10;
-				rollover = 1;
-			} else {
-				result[i] = a_val + b_val + rollover;
-				rollover = 0;
-			}
+			result[i] = (a_val + b_val + rollover) % 10;
+			rollover = (a_val + b_val + rollover) / 10;
 		}
 
 		if (result[result.length - 1] == 0) {
@@ -38,11 +35,12 @@ public class Bigs {
 	// bc (s.u.) benutzt wird: Umbruch nach 68 Ziffern mit einem \ am Ende
 	static void print(int[] n) {
 		for (int i = 1; i <= n.length; i++) {
-			System.out.print(n[i - 1]);
+			System.out.print(n[n.length - i]);
 			if (i % 68 == 0) {
 				System.out.println("\\");
 			}
 		}
+		System.out.println();
 	}
 
 	// konstruiert ein einstelliges Ziffernfeld aus der Ziffer d
@@ -96,11 +94,35 @@ public class Bigs {
 	}
 
 	// multipliziert das Ziffernfeld n mit einer (einstelligen!) int-Zahl
-	static int[] times(int[] n, int d) { /* TODO */
+	static int[] times(int[] n, int d) {
 		if (d > 9) {
 			throw new IllegalArgumentException();
 		}
-		return times(n, new int[] { d });
+		int[] result_array = new int[n.length + 1];
+		int rollover, result;
+		rollover = 0;
+
+		for (int i = 0; i < n.length; i++) {
+			// System.out.println("Rechne:" + n[i] + " * " + d + " + " +
+			// rollover);
+			result = n[i] * d + rollover;
+			result_array[i] = result % 10;
+			rollover = result / 10;
+			// System.out.println("Ergebnis: " + result);
+		}
+
+		if (rollover > 0) {
+			result_array[result_array.length - 1] = rollover;
+			return result_array;
+		}
+
+		// there is no remaining rollover, so remove the leading zero from the
+		// array.
+		int[] new_result = new int[result_array.length - 1];
+		for (int i = 0; i < new_result.length; i++) {
+			new_result[i] = result_array[i];
+		}
+		return new_result;
 	}
 
 	// multipliziert das Ziffernfeld n mit 10
@@ -115,8 +137,35 @@ public class Bigs {
 
 	// multipliziert zwei Ziffernfelder
 	static int[] times(int[] a, int[] b) { /* TODO */
+		int[] result_array = new int[a.length + b.length];
+		int[] newValue = new int[a.length + 1];
+		for (int i = 0; i < b.length; i++) {
+			newValue = times(a, b[i]);
+			for (int j = 0; j < i; j++) {
+				newValue = times10(newValue);
+			}
+			result_array = add(result_array, newValue);
+		}
 
-		return a;
+		int leadingZeros = 0;
+		for (int i = 0; i < result_array.length; i++) {
+			if (result_array[i] == 0)
+				break;
+			leadingZeros++;
+		}
+
+		if (result_array[result_array.length - 1] > 0) {
+			return result_array;
+		}
+		// the length of the result array is the sum of the length of the two
+		// arrays that are being multiplied, so there is a maximum of 1 leading
+		// zero. For example, 999*999 has 6 digits, while the smallest 3 digit
+		// number multiplied has only 5 digits (100*100).
+		int[] new_result = new int[result_array.length - 1];
+		for (int i = 0; i < new_result.length; i++) {
+			new_result[i] = result_array[i];
+		}
+		return new_result;
 	}
 
 	// Test auf kleiner-Relation zweier Ziffernfelder: a < b ?
@@ -166,32 +215,26 @@ public class Bigs {
 	}
 
 	public static void main(String[] s) {
-		/*
-		 * int[] a = One(); for (int i = 0; i < 10000; ++i) { a = times(a, 2); }
-		 * System.out.println("2^10000 hat " + a.length + " Stellen"); print(a);
-		 * // 2 hoch 10000 System.out.println();
-		 * 
-		 * int[] b = fromInt(775); int[] c = copy(b); for (int i = 1; i < 1042;
-		 * ++i) { c = times(c, b); } System.out.println("775^1042 hat " +
-		 * c.length + " Stellen"); print(c); // 775 hoch 1042
-		 * System.out.println();
-		 * 
-		 * System.out.println(less(a, c)); // beantwortet die Frage aus der //
-		 * Aufgabenueberschrift
-		 */
 
-		int[] a = { 5, 3, 2, 3, 4, 2, 7, 3 };
-		int[] b = { 5, 3, 2, 3, 4, 2 }; // 243235
-		int[] c = { 0, 4, 2, 3 };
-
-		int[] x = { 4, 1, 1 };
-		int[] y = { 5 };
-
-		int[] z = add(x, y);
-		for (int i = 0; i < 1000000; i++) {
-			z = add(z, a);
+		int[] a = One();
+		for (int i = 0; i < 10000; ++i) {
+			a = times(a, 2);
 		}
+		System.out.println("2^10000 hat " + a.length + " Stellen");
+		print(a);
+		// 2 hoch 10000 System.out.println();
 
-		print(z);
+		int[] b = fromInt(775);
+		int[] c = copy(b);
+		for (int i = 1; i < 1042; ++i) {
+			c = times(c, b);
+		}
+		System.out.println("775^1042 hat " + c.length + " Stellen");
+		print(c); // 775 hoch 1042
+		System.out.println();
+
+		System.out.println(less(a, c)); // beantwortet die Frage aus der
+										// Aufgabenueberschrift
+
 	}
 }
