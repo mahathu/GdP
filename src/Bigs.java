@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Bigs {
 	// addiert die Ziffernfelder a und b
 	public static int[] add(int[] a, int[] b) {
@@ -145,13 +143,6 @@ public class Bigs {
 				newValue = times10(newValue);
 			}
 			result_array = add(result_array, newValue);
-		}
-
-		int leadingZeros = 0;
-		for (int i = 0; i < result_array.length; i++) {
-			if (result_array[i] == 0)
-				break;
-			leadingZeros++;
 		}
 
 		if (result_array[result_array.length - 1] > 0) {
