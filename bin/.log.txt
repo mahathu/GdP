@@ -1,0 +1,199 @@
+Sudoku
++-------+-------+-------+
+| 4 1 3 | 6 5 8 | 7 2 0 | 
+| 2 0 6 | 7 4 1 | 3 5 8 | 
+| 5 8 7 | 0 2 3 | 1 4 6 | 
++-------+-------+-------+
+| 3 6 0 | 5 7 4 | 2 8 1 | 
+| 7 4 8 | 1 3 2 | 6 0 5 | 
+| 1 2 5 | 8 0 6 | 4 3 7 | 
++-------+-------+-------+
+|       |       |       | 
+|       |       |       | 
+|       |       |       | 
++-------+-------+-------+
+Solving: solve(0)
+board[0] ist: 4
+board[1] ist: 1
+board[2] ist: 3
+board[3] ist: 6
+board[4] ist: 5
+board[5] ist: 8
+board[6] ist: 7
+board[7] ist: 2
+board[8] ist: 0
+board[9] ist: 2
+board[10] ist: 0
+board[11] ist: 6
+board[12] ist: 7
+board[13] ist: 4
+board[14] ist: 1
+board[15] ist: 3
+board[16] ist: 5
+board[17] ist: 8
+board[18] ist: 5
+board[19] ist: 8
+board[20] ist: 7
+board[21] ist: 0
+board[22] ist: 2
+board[23] ist: 3
+board[24] ist: 1
+board[25] ist: 4
+board[26] ist: 6
+board[27] ist: 3
+board[28] ist: 6
+board[29] ist: 0
+board[30] ist: 5
+board[31] ist: 7
+board[32] ist: 4
+board[33] ist: 2
+board[34] ist: 8
+board[35] ist: 1
+board[36] ist: 7
+board[37] ist: 4
+board[38] ist: 8
+board[39] ist: 1
+board[40] ist: 3
+board[41] ist: 2
+board[42] ist: 6
+board[43] ist: 0
+board[44] ist: 5
+board[45] ist: 1
+board[46] ist: 2
+board[47] ist: 5
+board[48] ist: 8
+board[49] ist: 0
+board[50] ist: 6
+board[51] ist: 4
+board[52] ist: 3
+board[53] ist: 7
+versuche zu loesen: board[54]
+Solving: solve(55)
+versuche zu loesen: board[55]
+Solving: solve(56)
+versuche zu loesen: board[56]
+Solving: solve(57)
+versuche zu loesen: board[57]
+Solving: solve(58)
+versuche zu loesen: board[58]
+Solving: solve(59)
+versuche zu loesen: board[59]
+Solving: solve(60)
+versuche zu loesen: board[60]
+Solving: solve(61)
+versuche zu loesen: board[61]
+Solving: solve(62)
+versuche zu loesen: board[62]
+Solving: solve(63)
+versuche zu loesen: board[63]
+Solving: solve(64)
+versuche zu loesen: board[64]
+Solving: solve(65)
+versuche zu loesen: board[65]
+Solving: solve(66)
+versuche zu loesen: board[66]
+Solving: solve(67)
+versuche zu loesen: board[67]
+Solving: solve(68)
+versuche zu loesen: board[68]
+Solving: solve(69)
+versuche zu loesen: board[69]
+setze zurueck: board[69]
+=Ende der Funktion erreicht. board[69] = -1. Loese jetzt: 68
+Solving: solve(69)
+versuche zu loesen: board[69]
+Solving: solve(70)
+versuche zu loesen: board[70]
+setze zurueck: board[70]
+=Ende der Funktion erreicht. board[70] = -1. Loese jetzt: 69
+setze zurueck: board[69]
+=Ende der Funktion erreicht. board[69] = -1. Loese jetzt: 68
+setze zurueck: board[68]
+=Ende der Funktion erreicht. board[68] = -1. Loese jetzt: 67
+Solving: solve(68)
+versuche zu loesen: board[68]
+Solving: solve(69)
+versuche zu loesen: board[69]
+setze zurueck: board[69]
+=Ende der Funktion erreicht. board[69] = -1. Loese jetzt: 68
+Solving: solve(69)
+versuche zu loesen: board[69]
+Solving: solve(70)
+versuche zu loesen: board[70]
+Solving: solve(71)
+versuche zu loesen: board[71]
+setze zurueck: board[71]
+=Ende der Funktion erreicht. board[71] = -1. Loese jetzt: 70
+setze zurueck: board[70]
+=Ende der Funktion erreicht. board[70] = -1. Loese jetzt: 69
+setze zurueck: board[69]
+=Ende der Funktion erreicht. board[69] = -1. Loese jetzt: 68
+setze zurueck: board[68]
+=Ende der Funktion erreicht. board[68] = -1. Loese jetzt: 67
+setze zurueck: board[67]
+=Ende der Funktion erreicht. board[67] = -1. Loese jetzt: 66
+Solving: solve(67)
+versuche zu loesen: board[67]
+Solving: solve(68)
+versuche zu loesen: board[68]
+Solving: solve(69)
+versuche zu loesen: board[69]
+setze zurueck: board[69]
+=Ende der Funktion erreicht. board[69] = -1. Loese jetzt: 68
+Solving: solve(69)
+versuche zu loesen: board[69]
+Solving: solve(70)
+versuche zu loesen: board[70]
+setze zurueck: board[70]
+=Ende der Funktion erreicht. board[70] = -1. Loese jetzt: 69
+setze zurueck: board[69]
+=Ende der Funktion erreicht. board[69] = -1. Loese jetzt: 68
+setze zurueck: board[68]
+=Ende der Funktion erreicht. board[68] = -1. Loese jetzt: 67
+Solving: solve(68)
+versuche zu loesen: board[68]
+Solving: solve(69)
+versuche zu loesen: board[69]
+setze zurueck: board[69]
+=Ende der Funktion erreicht. board[69] = -1. Loese jetzt: 68
+Solving: solve(69)
+versuche zu loesen: board[69]
+Solving: solve(70)
+versuche zu loesen: board[70]
+Solving: solve(71)
+versuche zu loesen: board[71]
+Solving: solve(72)
+versuche zu loesen: board[72]
+Solving: solve(73)
+versuche zu loesen: board[73]
+Solving: solve(74)
+versuche zu loesen: board[74]
+Solving: solve(75)
+versuche zu loesen: board[75]
+Solving: solve(76)
+versuche zu loesen: board[76]
+Solving: solve(77)
+versuche zu loesen: board[77]
+Solving: solve(78)
+versuche zu loesen: board[78]
+Solving: solve(79)
+versuche zu loesen: board[79]
+Solving: solve(80)
+versuche zu loesen: board[80]
+Solving: solve(81)
+solved:
+
+Sudoku
++-------+-------+-------+
+| 4 1 3 | 6 5 8 | 7 2 0 | 
+| 2 0 6 | 7 4 1 | 3 5 8 | 
+| 5 8 7 | 0 2 3 | 1 4 6 | 
++-------+-------+-------+
+| 3 6 0 | 5 7 4 | 2 8 1 | 
+| 7 4 8 | 1 3 2 | 6 0 5 | 
+| 1 2 5 | 8 0 6 | 4 3 7 | 
++-------+-------+-------+
+| 0 3 1 | 2 6 5 | 8 7 4 | 
+| 6 5 2 | 4 8 7 | 0 1 3 | 
+| 8 7 4 | 3 1 0 | 5 6 2 | 
++-------+-------+-------+
