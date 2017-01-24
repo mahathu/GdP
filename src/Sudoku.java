@@ -9,22 +9,7 @@ public class Sudoku {
 	};
 
 	static Variante v;
-
 	static int[] board = new int[81];
-
-	/*
-	 * Those three arrays below make it easier for me to check if a certain
-	 * value is already in this row, column, box, or diagonal. With the
-	 * exception of diagonals, there is 9 of each type, so 9 elements in each
-	 * outer array, and 9 elements in each nested array to keep track of each
-	 * number. I thought about using a nested class but I believe that would be
-	 * overkill for something that is essentially just an array.
-	 */
-	static int[][] rows = new int[9][9];;
-	static int[][] columns = new int[9][9];;
-	static int[][] boxes = new int[9][9];
-	static int[][] diagonals = new int[2][9];
-	static int[][][] segments = { rows, columns, boxes, diagonals };
 
 	public static void main(String[] args) {
 		read();
@@ -39,29 +24,27 @@ public class Sudoku {
 		} else {
 			System.out.println("Sudoku");
 		}
-		int[] line;
 		int offset;
-		String delimiter, cell;
+		String delimiter, cell, vertical_delimiter = " +-------+-------+-------+";
 		for (int i = 0; i < 3; i++) {
-			System.out.println("+-------+-------+-------+");
+			System.out.println(vertical_delimiter);
 			for (int j = 0; j < 3; j++) {
+			    System.out.print(" ");
 				offset = 27 * i + 9 * j;
-				line = Arrays.copyOfRange(board, offset, offset + 9);
 				System.out.print("| ");
 				for (int k = 0; k < 9; k++) {
 					delimiter = " ";
-					// System.out.println(k+1 + " - " + (k+1)%3);
 					if ((k + 1) % 3 == 0) {
 						delimiter += "| ";
 					}
-					cell = (line[k] > -1) ? Integer.toString(line[k]) : " ";
+					cell = (board[offset+k] > -1) ? Integer.toString(board[offset+k]) : " ";
 					System.out.print(cell + delimiter);
 				}
 
 				System.out.println();
 			}
 		}
-		System.out.println("+-------+-------+-------+");
+		System.out.println(vertical_delimiter);
 	}
 
 	public static void read() {
