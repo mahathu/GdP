@@ -1,3 +1,5 @@
+package Sonnensystem;
+
 import gdp.stdlib.StdAudio;
 import gdp.stdlib.StdDraw;
 import gdp.stdlib.StdIn;
@@ -7,7 +9,7 @@ public class Sonnensystem {
 		// TODO Auto-generated method stub
 		final int NUMBER_OF_PLANETS = StdIn.readInt();
 		final float SYSTEM_RADIUS = StdIn.readFloat();
-		final String BACKGROUND_FILE = "starfield.jpg";
+		final String BACKGROUND_FILE = "Sonnensystem/starfield.jpg";
 		final int TIME_INTERVAL = 25000;
 		final double G = 6.67e-11;
 
@@ -31,7 +33,7 @@ public class Sonnensystem {
 		 * planets[i][4] Masse des Planeten
 		 */
 
-		StdAudio.play("2001.mid");
+		StdAudio.play("Sonnensystem/2001.mid");
 
 		while (true) {
 			// aktuellen Zustand des Systems zeichnen

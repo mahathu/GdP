@@ -1,6 +1,6 @@
 import java.util.concurrent.ThreadLocalRandom;
 
-public class MonteHall {
+public class MontyHall {
 
 	public static void main(String[] args) {
 		int n = Integer.parseInt(args[0]);
